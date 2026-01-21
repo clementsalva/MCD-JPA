@@ -7,7 +7,11 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
 public class Medicament {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +19,7 @@ public class Medicament {
 	private Integer reference = null;
 
 	@NonNull
-	@Column(unique=true, length = 255)
+	@Column(unique = true, length = 255)
 	private String nom;
 
 	private String quantiteParUnite = "Une boîte de 12";
@@ -33,8 +37,10 @@ public class Medicament {
 
 	/**
 	 * Nombre d'unités "en commande"
-	 * Un médicament est "en commande" si il est dans une commande qui n'est pas encore expédiée
-	 * Incrementé quand on ajoute des unités de ce médicament à une ligne de commande
+	 * Un médicament est "en commande" si il est dans une commande qui n'est pas
+	 * encore expédiée
+	 * Incrementé quand on ajoute des unités de ce médicament à une ligne de
+	 * commande
 	 * Décrémenté quand on expédie une commande contenant ce médicament
 	 */
 	@ToString.Exclude
@@ -43,8 +49,9 @@ public class Medicament {
 
 	/**
 	 * Niveau de reapprovisionnement
-	 * Si le stock devient inférieur ou égal à ce niveau, 
-	 * on doit approvisionner de nouvelles unités de ce médicament auprès d'un fournisseur
+	 * Si le stock devient inférieur ou égal à ce niveau,
+	 * on doit approvisionner de nouvelles unités de ce médicament auprès d'un
+	 * fournisseur
 	 */
 	@ToString.Exclude
 	@PositiveOrZero
@@ -63,6 +70,6 @@ public class Medicament {
 	@NonNull
 	@ToString.Exclude
 
-	private Categorie categorie ;
+	private Categorie categorie;
 
 }
